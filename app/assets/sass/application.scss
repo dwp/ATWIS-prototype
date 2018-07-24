@@ -1,0 +1,46 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+
+// Import GOV.UK Frontend
+@import "node_modules/govuk-frontend/all";
+
+// Patterns that aren't in Frontend
+@import "patterns/check-your-answers";
+@import "patterns/task-list";
+@import "patterns/related-items";
+
+// Components that aren't in Frontend
+@import "components/cookie-banner";
+@import "components/nav";
+@import "components/masthead";
+@import "components/update-panel";
+@import "components/sub-tabs";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.govuk-width-container {
+  max-width: 1280px
+}
+
+.govuk-header__container {
+  margin-bottom: 0
+}
+.govuk-header__logotype-text {
+  display: none
+}
+
+.govuk-header, 
+.govuk-header__container {
+  border-bottom: none
+}
+
+.govuk-footer {
+  margin-top: 100px
+}
+
+// .govuk-tabs__panel {
+//   border: none !important
+// }
+
+.govuk-select {
+  background-color: white;
+}

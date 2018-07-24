@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block atwisHeader %}
+  <div class="nav-horizontal">
+    <div class="govuk-width-container">
+      <ul class="nav-pri">
+        <li{% if yourCases %} class="active"{% endif %}><a href="your-cases">Your cases</a></li>
+      </ul>
+    </div>
+  </div>
+  {% block banner %}{% endblock %}
+{% endblock %}
