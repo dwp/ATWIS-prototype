@@ -22,14 +22,7 @@
               <td class="govuk-table__cell">{{ case.specialism }}</td>
               <td class="govuk-table__cell">{{ case.type }}</td>
               <td class="govuk-table__cell">{{ case.date }}</td>
-              <td class="govuk-table__cell"><a href="case?n={{ case.name }}">View case</a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">{{ case.name }}</td>
-              <td class="govuk-table__cell">{{ case.specialism }}</td>
-              <td class="govuk-table__cell">{{ case.type }}</td>
-              <td class="govuk-table__cell">{{ case.date }}</td>
-              <td class="govuk-table__cell"><a href="case?n={{ case.name }}">View case</a></td>
+              <td class="govuk-table__cell"><a href="case?n={{ case.name }}&ua=true">View case</a></td>
             </tr>
           {% endfor %}
       </tbody>

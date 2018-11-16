@@ -4,6 +4,7 @@ const moment = require('moment')
 module.exports = (router, version) => {
   router.use((req, res, next) => {
     res.locals.name = req.query.n
+    res.locals.unallocated = req.query.ua
     next()
   })
 
@@ -62,13 +63,15 @@ module.exports = (router, version) => {
 
   router.get(`/${version}/unallocated`, (req, res) => {
     res.render(`${version}/unallocated`, {
+      cases: req.session.data['unallocated-cases'],
       Unallocated: true
     })
   })
 
   router.get(`/${version}/search`, (req, res) => {
     res.render(`${version}/search`, {
-      Search: true
+      Search: true,
+      cases: req.session.data['unallocated-cases']
     })
   })
 }
