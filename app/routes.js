@@ -7,8 +7,14 @@ router.get('/', function (req, res) {
 })
 
 // Add your routes here - above the module.exports line
-require('./views/v1/routes')(router, 'v1')
+const { readdirSync, statSync } = require('fs')
+const { join, resolve } = require('path')
 
-require('./views/v2/routes')(router, 'v2')
+readdirSync(resolve(__dirname, 'views'))
+  .filter(f => statSync(join(resolve(__dirname, 'views'), f)).isDirectory() && f.match(/^v/))
+  .forEach(d => {
+    require(`./views/${d}/routes`)(router, d);
+  });
+
 
 module.exports = router

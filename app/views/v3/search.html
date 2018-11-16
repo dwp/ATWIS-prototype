@@ -1,0 +1,56 @@
+{% extends "./atwis.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form method="post" action="search">
+    {{ govukInput({
+      label: {
+        text: "Find a case",
+        classes: "govuk-label--l"
+      },
+      classes: 'govuk-!-width-one-half',
+      hint: {
+        text: 'Search by first name, last name or both'
+      },
+      id: "f-search",
+      name: "q",
+      value: data.q
+    }) }}
+    
+    {{ govukButton({
+      text: "Search"
+    }) }}
+    </form>
+
+    {% if data.q %}
+      {% if cases.length > 0 %}
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header">Name</th>
+              <th class="govuk-table__header">Specialism</th>
+              <th class="govuk-table__header">Case type</th>
+              <th class="govuk-table__header">Date submitted</th>
+              <th class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for case in cases %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ case.name }}</td>
+                <td class="govuk-table__cell">{{ case.specialism }}</td>
+                <td class="govuk-table__cell">{{ case.type }}</td>
+                <td class="govuk-table__cell">{{ case.date }}</td>
+                <td class="govuk-table__cell"><a href="case?n={{ case.name }}&ua=true">View case</a></td>
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>  
+      {% else %}
+      <p>There are no cases that match your search</p>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
