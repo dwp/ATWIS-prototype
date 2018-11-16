@@ -71,7 +71,9 @@ module.exports = (router, version) => {
   router.get(`/${version}/search`, (req, res) => {
     res.render(`${version}/search`, {
       Search: true,
-      cases: req.session.data['unallocated-cases']
+      cases: req.session.data['unallocated-cases'].filter(c => {
+        if (req.session.data.q) return c.name.toLowerCase().indexOf(req.session.data.q.toLowerCase()) > -1
+      })
     })
   })
 }
