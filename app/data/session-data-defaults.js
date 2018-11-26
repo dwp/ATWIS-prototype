@@ -24,7 +24,7 @@ module.exports = {
   'unallocated-cases': [{
     'name': 'Dereck Smith',
     'specialism': 'Pan disability',
-    'type': 'New application',
+    'type': 'Renewal',
     'date': '28 June 2018 - 13:23'
   }, {
     'name': 'Maximillia Erdman',
@@ -34,7 +34,7 @@ module.exports = {
   }, {
     'name': 'Sonya Corkery',
     'specialism': 'Pan disability',
-    'type': 'New application',
+    'type': 'Renewal',
     'date': '28 June 2018 - 15:23'
   }, {
     'name': 'Adaline Mann',
@@ -59,7 +59,7 @@ module.exports = {
   }, {
     'name': 'Royce Ryan',
     'specialism': 'Pan disability',
-    'type': 'New application',
+    'type': 'Renewal',
     'date': '28 June 2018 - 20:23'
   }, {
     'name': 'Vernice Trantow',
