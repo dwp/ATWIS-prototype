@@ -18,29 +18,7 @@
   </div>
   
   <div class="govuk-grid-column-one-third">
-    <div class="update-panel">
-      <h3 id="update-adviser-heading" class="govuk-heading-m">Update adviser</h3>
-      <select id="adviser-select" class="govuk-select govuk-!-margin-bottom-3" aria-labelledby="update-adviser-heading">
-        {% for adviser in advisers %}
-        <option value="{{ adviser }}" {% if advisers == 'Pan disability' %}selected="selected"{% endif %}>{{ adviser }}</option>
-        {% endfor %}
-      </select>
-      {{ govukButton({
-          attributes: {
-            id: "update-adviser"
-          },
-          text: "Save",
-          classes: "govuk-!-margin-bottom-0"
-        }) }}
-    </div>
-
-    <script>
-      window.addEventListener('load', function(){
-        $('#update-adviser').on('click', function(){
-          $('#banner-adviser').html($('#adviser-select').val());
-        })
-      })
-    </script>
+    {% include 'includes/update-panels.html' %}
   </div>
 </div>
 {% endblock %}

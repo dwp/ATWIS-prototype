@@ -23,12 +23,13 @@ module.exports = (router, version) => {
     req.session.showNotice = req.session.data['your-cases'].length >= 5
 
     if (!req.session.showNotice) {
-      req.session.data['your-cases'].push({
+      let requested = {
         name: faker.name.firstName() + ' ' + faker.name.lastName(),
-        specialism: 'Pan disability',
         type: Math.random() > 0.5 ? 'New application' : 'Renewal',
         date: moment().format('D MMMM Y - HH:mm')
-      })
+      }
+      requested.specialism = requested.type === 'Renewal' ? '' : 'Pan Disability';
+      req.session.data['your-cases'].push(requested);
     }
     res.redirect('your-cases')
   })
@@ -100,6 +101,7 @@ module.exports = (router, version) => {
 
   router.get(`/${version}/renew`, (req, res) => {
     res.render(`${version}/renew`, {
+      specialisms: req.session.data.specialisms,
       advisers: req.session.data.advisers
     })
   })
