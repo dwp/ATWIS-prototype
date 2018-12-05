@@ -9,21 +9,21 @@
     <form method="post" action="renewal-complete?n={{ name }}">
       <div class="govuk-form-group{{ ' govuk-form-group--error' if error }}">
         <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-margin-bottom-0">
             <h1 class="govuk-fieldset__heading">Are you sure you have completely processed this renewal in DISC?</h1>
+            <span class="govuk-hint">This will remove the renewal from your case list.</span>
+            {% if error %}
+            <span class="govuk-error-message">You must select an option</span>
+            {% endif %}
           </legend>
-          <p>This will remove the renewal from your case list.</p>
-          {% if error %}
-          <span class="govuk-error-message">You must select an option</span>
-          {% endif %}
           <div class="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="renew-yes" name="renew" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="renew-yes">Yes, remove this renewal from my case list.</label>
+              <label class="govuk-label govuk-radios__label" for="renew-yes">Yes</label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="renew-no" name="renew" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="renew-no">No, continue processing the renewal in DISC.</label>
+              <label class="govuk-label govuk-radios__label" for="renew-no">No</label>
             </div>
           </div>
         </fieldset>
