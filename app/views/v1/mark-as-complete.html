@@ -1,11 +1,11 @@
-{% from "button/macro.njk" import govukButton %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% extends "./atwis-case.html" %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  
+
     <form method="post" action="mark-as-complete?n={{ name }}">
       <div class="govuk-form-group{{ ' govuk-form-group--error' if error }}">
         <fieldset class="govuk-fieldset">

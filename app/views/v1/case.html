@@ -3,10 +3,12 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    
-    <div class="govuk-tabs" data-module="tabs">
-      <ul class="govuk-tabs__list">
-        <li class="govuk-tabs__list-item">
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+  </h2>
+<ul class="govuk-tabs__list">
+<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
           <a class="govuk-tabs__tab" href="#case">Case management</a>
         </li>
         <li class="govuk-tabs__list-item">
@@ -40,7 +42,7 @@
                   classes: "govuk-!-margin-bottom-0"
                 }) }}
             </div>
-            
+
             <div class="update-panel">
               <h3 id="update-adviser-heading">Update advisers</h3>
               <select id="adviser-select" class="govuk-select govuk-!-margin-bottom-3" aria-labelledby="update-adviser-heading">
@@ -88,7 +90,7 @@
               <span class="govuk-!-font-weight-bold">Submission date:</span> 28/06/2108 12:23 <br />
               <span class="govuk-!-font-weight-bold">Version of questions:</span> 23.0
             </p>
-            
+
             <h3 class="govuk-heading-m">Persoanl details</h3>
             <p>
               <span class="govuk-!-font-weight-bold">Full name:</span> {{ name }} <br />
@@ -99,9 +101,9 @@
 
             <h3 class="govuk-heading-m">Contact details</h3>
             <p>
-              <span class="govuk-!-font-weight-bold">Who do you want to be contacted about your condition, award or application:</span> Someone else 
+              <span class="govuk-!-font-weight-bold">Who do you want to be contacted about your condition, award or application:</span> Someone else
             </p>
-            
+
             <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Your representative</h4>
             <p>This should be someone you trust and who can talk about your condition</p>
             <p>
@@ -122,7 +124,7 @@
               <span class="govuk-!-font-weight-bold">Address:</span> The Burger House, 21 Main Street, Munchester <br />
               <span class="govuk-!-font-weight-bold">Postcode:</span> MU1 1ZZ <br />
             </p>
-            
+
             <h3 class="govuk-heading-m">Work contact details</h3>
             <p>
               <span class="govuk-!-font-weight-bold">Their name:</span> Celia Tasty <br />
@@ -163,7 +165,7 @@
         </div>
       </section>
     </div>
-  
+
   </div>
 </div>
 {% endblock %}

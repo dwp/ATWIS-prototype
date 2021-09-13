@@ -7,9 +7,6 @@ const express = require('express')
 const marked = require('marked')
 const router = express.Router()
 
-// Local dependencies
-const utils = require('../lib/utils.js')
-
 // Page routes
 
 // Docs index
@@ -18,8 +15,7 @@ router.get('/', function (req, res) {
 })
 
 router.get('/install', function (req, res) {
-  var url = utils.getLatestRelease()
-  res.render('install', { 'releaseURL': url })
+  res.render('install')
 })
 
 // Pages in install folder are markdown
@@ -32,7 +28,27 @@ router.get('/install/:page', function (req, res) {
   redirectMarkdown(req.params.page, res)
   var doc = fs.readFileSync(path.join(__dirname, '/documentation/install/', req.params.page + '.md'), 'utf8')
   var html = marked(doc)
-  res.render('install_template', {'document': html})
+  res.render('install_template', { document: html })
+})
+
+// When in 'promo mode', redirect to download the current release zip from
+// GitHub, based on the version number from package.json
+//
+// Otherwise, redirect to the latest release page on GitHub, to avoid just
+// linking to the same version being run by someone referring to the copy of the
+// docs running in their kit
+router.get('/download', function (req, res) {
+  if (req.app.locals.promoMode === 'true') {
+    const version = require('../package.json').version
+
+    res.redirect(
+      `https://github.com/alphagov/govuk-prototype-kit/archive/v${version}.zip`
+    )
+  } else {
+    res.redirect(
+      'https://github.com/alphagov/govuk-prototype-kit/releases/latest'
+    )
+  }
 })
 
 // Examples - examples post here
@@ -44,21 +60,21 @@ router.post('/tutorials-and-examples', function (req, res) {
 
 // Passing data into a page
 router.get('/examples/template-data', function (req, res) {
-  res.render('examples/template-data', { 'name': 'Foo' })
+  res.render('examples/template-data', { name: 'Foo' })
 })
 
-// Branching
-router.get('/examples/over-18', function (req, res) {
-  // Get the answer from the query string (eg. ?over18=false)
-  var over18 = req.query.over18
+// Redirects
 
-  if (over18 === 'false') {
-    // Redirect to the relevant page
-    res.redirect('/docs/examples/under-18')
-  } else {
-    // If over18 is any other value (or is missing) render the page requested
-    res.render('examples/over-18')
-  }
+router.get('/examples/branching', function (req, res) {
+  res.redirect('/docs/make-first-prototype/branching')
+})
+
+router.get('/making-pages', function (req, res) {
+  res.redirect('/docs/make-first-prototype/create-pages')
+})
+
+router.get('/make-first-prototype/add-questions', function (req, res) {
+  res.redirect('/docs/make-first-prototype/use-components')
 })
 
 module.exports = router

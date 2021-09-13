@@ -53,7 +53,7 @@ module.exports = (router, version) => {
           a.splice(i, 1)
         }
       })
-      
+
       res.redirect('your-cases')
     } else {
       res.redirect(`case?n=${req.query.n}#application`)
